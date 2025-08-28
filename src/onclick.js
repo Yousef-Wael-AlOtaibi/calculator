@@ -3,6 +3,7 @@ let operation;
 let oldOperation;
 let number1 = '';
 let number2 = '';
+let operationSign = '';
 let displayArr = [];
 const display = document.getElementById('display');
 const operationFunctions = {
@@ -10,73 +11,64 @@ const operationFunctions = {
     subtract:subtract,
     multiply:multiply,
     divide:divide,
-    opposite:opposite,
 }
+
 export const numberOnclick = e=>{
+    console.log(operation);
     if(!operation){
-        const index = displayArr.indexOf(number1);
         number1+=(e.target.value);
-        if(!displayArr[index])displayArr.push(number1);
-        else{displayArr[index]=number1}
     }
     else{
-        const index = displayArr.indexOf(number2);
         number2+=(e.target.value);
-        if(!displayArr[index])displayArr.push(number2);
-        else{displayArr[index]=number2}
     }
     console.log(`Num1: ${number1}, Num2: ${number2}`);
-    display.value = displayArr.join('');
+    display.value = [number1,operationSign,number2].join('');
 }
 export const operationOnclick = e=>{
-    console.log(`Num1: ${number1}, Num2: ${number2}`);
+    if(!number1 || operation)return;
+    operationSign = e.target.value;
     if(oldOperation && number1 && number2){
         const result = oldOperation(Number(number1),Number(number2))
         displayArr = [];
         number2 = '';
         number1 = result;
-        displayArr[0] = number1;
         display.value = displayArr.join('');
     }
-    if(e.target.id === 'opposite'){
-        operation = operationFunctions[e.target.id];
-        const oppositeNumber = operation(Number(number1));
-        return
-    }
-    displayArr.push(e.target.value);
-    number2 = '';
     operation = operationFunctions[e.target.id];
-    oldOperation = operation;
-    display.value = displayArr.join('');
+    display.value = [number1,operationSign,number2].join('');
 }
 export const getResult = ()=>{
-    if(!operation && oldOperation){
-    const result = oldOperation(Number(number1),Number(number2))
-    displayArr = [];
-    number1 = result;
-    number2 = '';
-    displayArr[0] = number1;
-    display.value = displayArr.join('');
-    return
-    }
-    if(!operation || operation === divide && Number(number2) === 0){
-        console.log('error!');
-        return
+    let result;
+    if(!operation){
+        console.log(number1);
+        display.value = number1;
+        return;
     };
-    const result = operation(Number(number1),Number(number2))
-    displayArr = [];
+    if(operation === divide && Number(number2) === 0){
+        throw new Error('Cannot divide by zero!');
+    };
+    result = operation(Number(number1),Number(number2));
     number1 = result;
     number2 = '';
-    displayArr[0] = number1;
-    display.value = displayArr.join('');
+    display.value = number1;
     oldOperation = operation;
+    console.log(oldOperation)
     operation = null;
 }
 export const clear = () => {
     display.value = '';
     number1 = '';
     number2 = '';
-    displayArr = [];
     oldOperation = null;
     operation = null;
+}
+export const backspace = () => {
+    console.log('Number1: ',number1,'Operation: ',operation,'Number2: ',number2)
+    display.value = display.value.slice(0,display.value.length-1);
+    if(number1 && !operation && !number2){
+        number1=number1.toString().slice(0,number1.length-1)
+    }
+    else if(number1 && operation && !number2){operation=operation.toString().slice(0,operation.length-1)}
+    else if(number1 && operation && number2){number2=number2.toString().slice(0,number2.length-1)}
+    console.log('Number1: ',number1,'Operation: ',operation,'Number2: ',number2)
 }

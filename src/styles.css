@@ -18,6 +18,7 @@ html,body{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     border:2px solid black;
+    height:auto;
 }
 #display{
     border:2px solid black;
