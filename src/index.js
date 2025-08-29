@@ -11,8 +11,8 @@ const equalBtn = document.getElementById('equal-btn');
 const clearBtn = document.getElementById('clear-btn');
 numberBtns.forEach(btn=>btn.onclick=numberOnclick);
 operationBtns.forEach(btn=>btn.onclick=operationOnclick);
-equalBtn.onclick = e=>{
-    getResult(e);
+equalBtn.onclick = () => {
+    getResult();
 }
 clearBtn.onclick = clear;
 backspaceBtn.onclick = backspace;

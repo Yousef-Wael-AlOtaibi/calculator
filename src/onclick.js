@@ -4,7 +4,6 @@ let oldOperation;
 let number1 = '';
 let number2 = '';
 let operationSign = '';
-let displayArr = [];
 const display = document.getElementById('display');
 const operationFunctions = {
     add:add,
@@ -14,7 +13,6 @@ const operationFunctions = {
 }
 
 export const numberOnclick = e=>{
-    console.log(operation);
     if(!operation){
         number1+=(e.target.value);
     }
@@ -25,16 +23,22 @@ export const numberOnclick = e=>{
     display.value = [number1,operationSign,number2].join('');
 }
 export const operationOnclick = e=>{
-    if(!number1 || operation)return;
-    operationSign = e.target.value;
+    let result;
+    if(!number1)return;
+    console.log(oldOperation);
     if(oldOperation && number1 && number2){
-        const result = oldOperation(Number(number1),Number(number2))
-        displayArr = [];
-        number2 = '';
-        number1 = result;
-        display.value = displayArr.join('');
+        console.log('atleast we are gettin there!')
+    result = oldOperation(Number(number1),Number(number2));
+    number1 = result;
+    number2 = '';
+    display.value = number1;
+    oldOperation = null;
+    console.log(oldOperation)
+    operationSign = '';
     }
     operation = operationFunctions[e.target.id];
+    oldOperation = operation
+    operationSign = e.target.value;
     display.value = [number1,operationSign,number2].join('');
 }
 export const getResult = ()=>{
@@ -51,7 +55,6 @@ export const getResult = ()=>{
     number1 = result;
     number2 = '';
     display.value = number1;
-    oldOperation = operation;
     console.log(oldOperation)
     operation = null;
     operationSign = '';
