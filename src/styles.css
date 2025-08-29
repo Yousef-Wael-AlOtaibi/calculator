@@ -1,4 +1,10 @@
-*,*::before{
+:root{
+    --calc-bg:rgb(65, 65, 65);
+    --number-bg:rgba(106, 106, 106, 0.427);
+    --operator-bg:rgba(9, 8, 8, 0.484);
+    --text-color:white;
+}
+*,*::before,*::after{
     box-sizing:border-box;
     margin:0;
     padding:0;
@@ -12,17 +18,36 @@ html,body{
     min-width:300px;
     aspect-ratio: 1;
     border:2px solid black;
+    background:var(--calc-bg);
 }
 #btns-container{
-    width:100%;
+    margin:auto;
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    border:2px solid black;
+    border:0.5px solid rgb(255, 255, 255);
     height:auto;
+}
+.calc-btn{
+    color:var(--text-color);
+    aspect-ratio: 1.5;
+
+}
+.number-btn{
+    background: var(--number-bg);
+}
+.operation{
+    background: var(--operator-bg);
+}
+#equal-btn{
+    background:orange;
 }
 #display{
     border:2px solid black;
     height:10%;
     width:80%;
     overflow:auto;
+}
+#backspace-btn > img{
+    max-width: 100%;
+    height:auto;
 }
