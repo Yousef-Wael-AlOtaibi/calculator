@@ -44,7 +44,9 @@ html,body{
 #display{
     border:2px solid black;
     height:10%;
-    width:80%;
+    width:100%;
+    background-color:grey;
+    color:white;
     overflow:auto;
 }
 #backspace-btn > img{

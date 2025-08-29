@@ -54,6 +54,7 @@ export const getResult = ()=>{
     oldOperation = operation;
     console.log(oldOperation)
     operation = null;
+    operationSign = '';
 }
 export const clear = () => {
     display.value = '';
@@ -61,6 +62,7 @@ export const clear = () => {
     number2 = '';
     oldOperation = null;
     operation = null;
+    operationSign = '';
 }
 export const backspace = () => {
     console.log('Number1: ',number1,'Operation: ',operation,'Number2: ',number2)
@@ -68,7 +70,6 @@ export const backspace = () => {
     if(number1 && !operation && !number2){
         number1=number1.toString().slice(0,number1.length-1)
     }
-    else if(number1 && operation && !number2){operation=operation.toString().slice(0,operation.length-1)}
+    else if(number1 && operation && !number2){operationSign=operationSign.toString().slice(0,operationSign.length-1); operation = null;}
     else if(number1 && operation && number2){number2=number2.toString().slice(0,number2.length-1)}
-    console.log('Number1: ',number1,'Operation: ',operation,'Number2: ',number2)
 }
