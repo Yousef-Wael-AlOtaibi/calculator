@@ -7,11 +7,13 @@
     <title>Calculator</title>
 </head>
 <body>
+    <div id="top-btns"></div>
+    <button id="show-info-btn">Info</button>
     <div id="calculator">
         <input id="display" type="text" readonly>
         <div id="btns-container">
             <button class="calc-btn operation"></button>
-            <button class="calc-btn operation"></button>
+        <button class="calc-btn operation" id="divide" value='&divide'>&divide</button>
         <button class="calc-btn operation" id="clear-btn">C</button>
         <button class="calc-btn operation" id='backspace-btn'><img src='./backspace.png' alt="delete"></button>
             <button class="calc-btn number-btn" value="7">7</button>
@@ -26,17 +28,13 @@
             <button class="calc-btn number-btn" value="2">2</button>
             <button class="calc-btn number-btn" value="3">3</button>
         <button class="calc-btn operation" id="multiply" value="x">x</button>
-        <button class="calc-btn operation">-/+</button>
+        <button class='calc-btn' id="opposite-btn" >-/+</button>
         <button class="calc-btn number-btn" value="0">0</button>
-        <button class="calc-btn number-btn" value='.'>.</button>
-        <button class="calc-btn operation" id="divide" value='&divide'>&divide</button>
-        <button></button>
-        <button></button>
-        <button></button>
+        <button class="calc-btn number-btn custom" value='.'>.</button>
         <button class="calc-btn" id="equal-btn">=</button>
         </div>
     </div>
-    <div id='resources'>\
+    <div id='info' class='hidden'>
         <a href="https://www.flaticon.com/free-icons/calculator" title="calculator icons">Calculator icons created by Smashicons - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/backspace" title="backspace icons">Backspace icons created by Smashicons - Flaticon</a>
     </div>

@@ -14,42 +14,45 @@ html,body{
     height: 100%;
 }
 #calculator{
-    width:25%;
+    width:100%;
+    aspect-ratio: 2;
     min-width:300px;
-    aspect-ratio: 1;
-    border:2px solid black;
     background:var(--calc-bg);
 }
 #btns-container{
     margin:auto;
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    border:0.5px solid rgb(255, 255, 255);
-    height:auto;
 }
 .calc-btn{
     color:var(--text-color);
-    aspect-ratio: 1.5;
-
+    padding:1rem;
+    font-size: 2rem;
 }
 .number-btn{
     background: var(--number-bg);
 }
-.operation{
+.operation,[value='.'],#opposite-btn{
     background: var(--operator-bg);
 }
 #equal-btn{
     background:orange;
 }
 #display{
-    border:2px solid black;
-    height:10%;
+    height:40%;
     width:100%;
-    background-color:grey;
+    font-size:4rem;
+    background-color:var(--number-bg);
     color:white;
     overflow:auto;
 }
 #backspace-btn > img{
     max-width: 100%;
     height:auto;
+}
+.hidden{
+    display:none !important;
+}
+#top-btns{
+    position:fixed;
 }

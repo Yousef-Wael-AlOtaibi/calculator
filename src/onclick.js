@@ -14,11 +14,11 @@ const operationFunctions = {
 
 export const numberOnclick = e=>{
     if(!operation){
-        if(number1.includes('.') && e.target.value === '.')return;
+        if(number1.toString().includes('.') && e.target.value === '.')return;
         number1+=(e.target.value);
     }
     else{
-        if(number2.includes('.') && e.target.value === '.')return;
+        if(number2.toString().includes('.') && e.target.value === '.')return;
         number2+=(e.target.value);
     }
     console.log(`Num1: ${number1}, Num2: ${number2}`);
@@ -27,16 +27,15 @@ export const numberOnclick = e=>{
 export const operationOnclick = e=>{
     let result;
     if(!number1)return;
-    console.log(oldOperation);
     if(oldOperation && number1 && number2){
         console.log('atleast we are gettin there!')
-    result = oldOperation(Number(number1),Number(number2));
-    number1 = result;
-    number2 = '';
-    display.value = number1;
-    oldOperation = null;`   `
-    console.log(oldOperation)
-    operationSign = '';
+        result = oldOperation(Number(number1),Number(number2));
+        number1 = result;
+        number2 = '';
+        display.value = number1;
+        oldOperation = null;
+        console.log(oldOperation)
+        operationSign = '';
     }
     operation = operationFunctions[e.target.id];
     oldOperation = operation
@@ -46,7 +45,6 @@ export const operationOnclick = e=>{
 export const getResult = ()=>{
     let result;
     if(!operation){
-        console.log(number1);
         display.value = number1;
         return;
     };
@@ -55,9 +53,9 @@ export const getResult = ()=>{
     };
     result = operation(Number(number1),Number(number2));
     number1 = result;
+    console.log(`Result: ${result}, number1: ${number1}`)
     number2 = '';
     display.value = number1;
-    console.log(oldOperation)
     operation = null;
     operationSign = '';
 }
@@ -77,4 +75,14 @@ export const backspace = () => {
     }
     else if(number1 && operation && !number2){operationSign=operationSign.toString().slice(0,operationSign.length-1); operation = null;}
     else if(number1 && operation && number2){number2=number2.toString().slice(0,number2.length-1)}
+}
+export const oppositeOnclick = () => {
+    if((!number1 && !number2) || number1==='0' || number2==='0')return;
+    if(!operation){
+        number1 = (number1[0]==='-' || number1<0)? number1.toString().slice(1,number1.length):`-${number1}`;
+    }
+    else{
+        number2 = (number2[0]==='-' || number2<0)? number2.toString().slice(1,number2.length):`-${number2}`;
+    }
+    display.value = [number1,operationSign,number2].join('');
 }
