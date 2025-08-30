@@ -14,9 +14,11 @@ const operationFunctions = {
 
 export const numberOnclick = e=>{
     if(!operation){
+        if(number1.includes('.') && e.target.value === '.')return;
         number1+=(e.target.value);
     }
     else{
+        if(number2.includes('.') && e.target.value === '.')return;
         number2+=(e.target.value);
     }
     console.log(`Num1: ${number1}, Num2: ${number2}`);
@@ -32,7 +34,7 @@ export const operationOnclick = e=>{
     number1 = result;
     number2 = '';
     display.value = number1;
-    oldOperation = null;
+    oldOperation = null;`   `
     console.log(oldOperation)
     operationSign = '';
     }
