@@ -6,8 +6,6 @@ const operationBtns = document.querySelectorAll('.operation');
 const equalBtn = document.getElementById('equal-btn');
 const clearBtn = document.getElementById('clear-btn');
 const oppositeBtn = document.getElementById('opposite-btn');
-const showInfoBtn = document.getElementById('show-info-btn');
-const infoContainer = document.getElementById('info');
 numberBtns.forEach(btn=>btn.onclick=numberOnclick);
 operationBtns.forEach(btn=>btn.onclick=operationOnclick);
 equalBtn.onclick = () => {
@@ -16,6 +14,3 @@ equalBtn.onclick = () => {
 clearBtn.onclick = clear;
 backspaceBtn.onclick = backspace;
 oppositeBtn.onclick = oppositeOnclick;
-showInfoBtn.onclick = () => {
-    infoContainer.classList.toggle('hidden');
-}
