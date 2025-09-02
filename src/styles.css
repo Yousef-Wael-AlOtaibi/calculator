@@ -14,7 +14,7 @@ html,body{
     height: 100%;
 }
 #calculator{
-    width:90%;
+    width:100%;
     aspect-ratio: 2;
     min-width:300px;
     background:var(--calc-bg);
