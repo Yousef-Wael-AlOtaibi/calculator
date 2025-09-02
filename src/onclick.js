@@ -1,4 +1,4 @@
-import { add, opposite, subtract, multiply, divide } from './operations.js';
+import { add, subtract, multiply, divide } from './operations.js';
 let operation;
 let oldOperation;
 let number1 = '';
@@ -26,7 +26,7 @@ export const numberOnclick = e=>{
 }
 export const operationOnclick = e=>{
     let result;
-    if(!number1)return;
+    if(!number1 && number1 !== 0)return;
     if(oldOperation && number1 && number2){
         console.log('atleast we are gettin there!')
         result = oldOperation(Number(number1),Number(number2));
@@ -53,7 +53,6 @@ export const getResult = ()=>{
     };
     result = operation(Number(number1),Number(number2));
     number1 = result;
-    console.log(`Result: ${result}, number1: ${number1}`)
     number2 = '';
     display.value = number1;
     operation = null;
