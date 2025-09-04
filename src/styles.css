@@ -1,7 +1,9 @@
 :root{
-    --calc-bg:rgb(65, 65, 65);
+    --calc-bg:rgb(0,0,0);
     --number-bg:rgba(106, 106, 106, 0.427);
-    --operator-bg:rgba(9, 8, 8, 0.484);
+    --operator-bg:rgba(50, 50, 50, 0.484);
+    --top-btns-bg:rgb(23, 23, 23);
+    --operator-color:lime;
     --text-color:white;
 }
 *,*::before,*::after{
@@ -16,14 +18,12 @@ html,body{
 #calculator{
     width:100%;
     height:100%;
-    aspect-ratio: 2;
-    min-width:300px;
     background:var(--calc-bg);
-    padding:2rem;
+    padding:1rem;
 }
 #btns-container{
     width:100%;
-    height: 70%;
+    height:75%;
     margin:auto;
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -31,19 +31,18 @@ html,body{
     gap:0.5rem;
 }
 .calc-btn{
+    position: relative;
     color:var(--text-color);
     font-size: 2rem;
-    border:2px solid black;
-    border-radius: 50px;
+    border:none;
     transition: bottom, background-color  200ms ease-in-out;
     text-align: center;
+    border-radius:50px;
 }
 .calc-btn:hover{
-    position: relative;
     bottom:4px
 }
 .calc-btn:active{
-    position: relative;
     bottom:8px
 }
 .number-btn{
@@ -65,27 +64,49 @@ html,body{
     background-color: hsl(0,0%,50%);
 }
 #equal-btn{
-    background:orange;
+    background:rgb(255, 166, 0);
 }
 #equal-btn:hover{
-    background:rgb(255, 188, 63);
+    background:rgb(254, 174, 26);
 }
 #equal-btn:active{
-    background:rgb(255, 211, 130);
+    background:rgb(251, 179, 44);
 }
 #display{
-    height:30%;
+    height:20%;
     width:100%;
     text-align:right;
     font-size:4rem;
     background-color:var(--number-bg);
-    color:white;
+    color:var(--text-color);
     overflow:auto;
+    border:none;
     border-radius: 30px;
 }
 #backspace-btn > img{
     max-width: 100%;
     height:auto;
+}
+#divide,#add,#subtract,#multiply,#opposite-btn{
+    color:var(--operator-color);
+}
+#clear-btn{
+    color:red;
+}
+#top-btns{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    gap:0.5rem;
+}
+#top-btns button{
+    background:var(--top-btns-bg);
+    padding:0.5rem;
+    color:var(--text-color);
+    border:none;
+    border-radius:10px;
+    aspect-ratio: 2;
 }
 .hidden{
     display:none !important;

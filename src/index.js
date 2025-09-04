@@ -6,11 +6,20 @@ const operationBtns = document.querySelectorAll('.operation');
 const equalBtn = document.getElementById('equal-btn');
 const clearBtn = document.getElementById('clear-btn');
 const oppositeBtn = document.getElementById('opposite-btn');
+const themeBtn = document.getElementById('theme-btn');
+const root = document.documentElement;
+let isDarkMode = true;
 numberBtns.forEach(btn=>btn.onclick=numberOnclick);
 operationBtns.forEach(btn=>btn.onclick=operationOnclick);
-equalBtn.onclick = () => {
-    getResult();
-}
+equalBtn.onclick = getResult;
 clearBtn.onclick = clear;
 backspaceBtn.onclick = backspace;
 oppositeBtn.onclick = oppositeOnclick;
+themeBtn.onclick = () => {
+    root.style.setProperty('--calc-bg',isDarkMode?'#dcdcdcff':'black');
+    root.style.setProperty('--text-color',isDarkMode?'black':'white');
+    root.style.setProperty('--top-btns-bg',isDarkMode?'rgb(200,200,200)':'rgb(23, 23, 23)')
+    themeBtn.textContent = isDarkMode? 'Dark Mode':'Light Mode';
+
+    isDarkMode = !isDarkMode;
+}
