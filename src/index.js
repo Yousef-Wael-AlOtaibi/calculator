@@ -20,6 +20,5 @@ themeBtn.onclick = () => {
     root.style.setProperty('--text-color',isDarkMode?'black':'white');
     root.style.setProperty('--top-btns-bg',isDarkMode?'rgb(200,200,200)':'rgb(23, 23, 23)')
     themeBtn.textContent = isDarkMode? 'Dark Mode':'Light Mode';
-
     isDarkMode = !isDarkMode;
 }
